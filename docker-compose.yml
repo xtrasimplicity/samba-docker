@@ -4,5 +4,12 @@ services:
   samba:
     image: xtrasimplicity/samba
     build: .
+    environment:
+      USERS: # A comma-delimited list of users
+    volumes:
+      - smbd-secrets:/usr/local/samba/private/
     ports:
       - 445:445
+
+volumes:
+  smbd-secrets:

@@ -1,5 +1,8 @@
 FROM alpine:latest
-RUN apk add --no-cache samba bash
+RUN apk add --no-cache samba ruby
+COPY bin/start /usr/sbin/start-samba
+RUN chmod +x /usr/sbin/start-samba
 
 EXPOSE 445
-CMD ["/usr/sbin/smbd", "-F", "-S", "--no-process-group"]
+VOLUME /usr/local/samba/private
+CMD ["/usr/sbin/start-samba"]

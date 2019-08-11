@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+users = ENV.fetch('USERS') { '' }.split(',')
+
+users.each do |user|
+  puts "Creating local user #{user}..."
+  `adduser -H -s /sbin/nologin -D #{user}`
+end
+
+exec "/usr/sbin/smbd -FS --no-process-group"
