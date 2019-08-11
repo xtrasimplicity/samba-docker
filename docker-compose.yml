@@ -7,9 +7,9 @@ services:
     environment:
       USERS: # A comma-delimited list of users
     volumes:
-      - smbd-secrets:/usr/local/samba/private/
+      - smbd-conf:/var/lib/samba
     ports:
       - 445:445
 
 volumes:
-  smbd-secrets:
+  smbd-conf:
